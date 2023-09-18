@@ -1,13 +1,8 @@
 from selenium import webdriver 
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.service import Service as ChromeService 
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.support import expected_conditions as EC
 import time
-import csv
-from bs4 import BeautifulSoup as bs 
-import requests 
 
 desired_macchine_id = input("Please enter the machine you are servicing: ")
 
