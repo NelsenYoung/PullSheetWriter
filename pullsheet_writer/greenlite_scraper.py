@@ -5,6 +5,21 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 desired_macchine_id = input("Please enter the machine you are servicing: ")
+conf = 0
+machine_ids = ['0100101', '01002013', '01003014', '01005020', '010060210', 
+               '0101012', '0200103', '0200204', '0200305', '0200315', '0200416', 
+               '020102', '020123', '020210', '020222', '030106', '030207', '0303011',
+               '040108', '040109', '040317', '040318', '236237']
+
+# Check for valid input
+while(conf != 1):
+    for machine in machine_ids:
+        if(machine == desired_macchine_id):
+            conf = 1
+            break
+    if(conf == 0):
+        desired_macchine_id = input("Please enter the machine you are servicing: ")
+
 
 # Greenlite Credentials
 username = "fredcougar17@gmail.com"
@@ -21,9 +36,10 @@ driver.get(URL)
 driver.find_element("id", "UserName").send_keys(username)
 driver.find_element("id", "Password").send_keys(password)
 button = driver.find_element("id", "signInButton")
-button.click()
 
-time.sleep(10)
+time.sleep(2)
+
+button.click()
 
 # Find the desired machine
 view_container = driver.find_element(By.ID, "viewContainer")
@@ -31,7 +47,7 @@ machine_id = view_container.find_element(By.LINK_TEXT, desired_macchine_id)
 machine_id.click()
 
 
-time.sleep(5)
+time.sleep(0.25)
 
 
 machine_container = driver.find_element(By.ID, "machineDetailTabControl")
@@ -56,9 +72,9 @@ for item in items:
         coil = machine_container.find_element(By.ID, coil_string.replace("2", str(i)))
     
 
-    if(int(count.text) < 3 or int(sales.text) > 2):
-        if(int(sales.text) == 0):
-            print(coil.text, " - ", item.text, 2)
+    if(int(count.text) < 2 or int(sales.text) > 1):
+        if(int(count.text) == 0):
+            print(coil.text, " - ", item.text, " Empty Coil")
         else:
             print(coil.text, " - ", item.text, int(sales.text) + 1)
     
