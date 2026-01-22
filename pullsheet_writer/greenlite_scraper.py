@@ -22,8 +22,8 @@ while(conf != 1):
 
 
 # Greenlite Credentials
-username = "fredcougar17@gmail.com"
-password = "Tipper05"
+username = ""
+password = ""
 
 #install the Chrome driver
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
